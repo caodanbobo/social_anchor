@@ -12,4 +12,12 @@ pub mod social_anchor {
     pub fn initialize(ctx: Context<Initialize>, name: String) -> Result<()> {
         instructions::profile::initialize(ctx, name)
     }
+
+    pub fn post_tweet(ctx: Context<PostTweet>, content: String) -> Result<()> {
+        instructions::tweet::post_tweet(ctx, content)
+    }
+
+    pub fn smash_like(ctx: Context<SmashLike>) -> Result<()> {
+        instructions::tweet::smash_like(ctx)
+    }
 }

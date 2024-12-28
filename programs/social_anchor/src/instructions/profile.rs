@@ -2,6 +2,7 @@ use crate::state::profile::*;
 use anchor_lang::prelude::*;
 pub fn initialize(ctx: Context<Initialize>, name: String) -> Result<()> {
     ctx.accounts.social_profile.profile_name = name;
+    ctx.accounts.social_profile.tweet_count = 0;
     Ok(())
 }
 #[derive(Accounts)]
