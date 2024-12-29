@@ -7,6 +7,7 @@ declare_id!("9rDkiKxYckkXZb7XN5rZBbxJA927yBncUfUmmULb1QbF");
 
 #[program]
 pub mod social_anchor {
+
     use super::*;
 
     pub fn initialize(ctx: Context<Initialize>, name: String) -> Result<()> {
@@ -19,5 +20,9 @@ pub mod social_anchor {
 
     pub fn smash_like(ctx: Context<SmashLike>) -> Result<()> {
         instructions::tweet::smash_like(ctx)
+    }
+
+    pub fn create_mint(ctx: Context<CreatMintToken>) -> Result<()> {
+        instructions::mint::creat_mint_token(ctx)
     }
 }

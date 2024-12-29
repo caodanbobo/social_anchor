@@ -17,3 +17,13 @@ wallet = "~/.config/solana/id.json"
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
 api = "yarn run ts-node app/index.ts"
+
+
+[test.validator]
+bind_address = "127.0.0.1"
+url = "https://mainnet.helius-rpc.com/?api-key=fb252456-993c-4a77-9a32-3c7456029875"
+ledger = ".anchor/test-ledger"
+rpc_port = 8899
+
+[[test.validator.clone]]
+address = "metaqbxxUerdq28cj1RbAWKYQm3ybzjb6a8bt518x1s"
