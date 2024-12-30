@@ -10,7 +10,7 @@ pub struct Initialize<'info> {
     #[account(mut)]
     pub authority: Signer<'info>,
     #[account(
-        init,
+        init_if_needed,
         payer=authority,
         space=8+SocialProfile::INIT_SPACE,
         seeds=[SocialProfile::SEED_PREFIX.as_bytes(), authority.key().as_ref()],

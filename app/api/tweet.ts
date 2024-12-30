@@ -12,7 +12,7 @@ export async function postTweet(
   const profile = await program.account.socialProfile.fetch(profilePda);
   const [tweetPda] = anchor.web3.PublicKey.findProgramAddressSync(
     [
-      Buffer.from("tweet"),
+      Buffer.from("tweet_v1"),
       profilePda.toBuffer(),
       Buffer.from(`${profile.tweetCount + 1}`),
     ],
@@ -40,13 +40,15 @@ export async function getTweet(
 
 export async function smashLike(
   wallet: anchor.Wallet,
-  pda: anchor.web3.PublicKey
+  pda: anchor.web3.PublicKey,
+  author_key: anchor.web3.PublicKey
 ) {
   return await program.methods
     .smashLike()
     .accounts({
       authority: wallet.publicKey,
       socialTweet: pda,
+      authorWallet: author_key,
     })
     .signers([wallet.payer])
     .rpc();
